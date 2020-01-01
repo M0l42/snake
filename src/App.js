@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {isMobile} from 'react-device-detect';
 
 class Box extends React.Component {
     selectBox = () => {
@@ -63,9 +64,16 @@ class Grid extends React.Component {
 class Main extends React.Component{
     constructor() {
         super();
+        if (isMobile) {
+            this.cols = 30;
+            this.rows = 30;
+        }
+        else {
+            this.cols = 30;
+            this.rows = 30;
+        }
+        return <div> ...content </div>
         this.speed = 60;
-        this.rows = 30;
-        this.cols = 30;
         this.direction = -1;
         this.algorithm = "dijkstra";
         this.snake = [{
