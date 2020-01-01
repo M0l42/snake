@@ -66,7 +66,7 @@ class Main extends React.Component{
         this.speed = 60;
         this.rows = 30;
         this.cols = 30;
-        this.direction = 2;
+        this.direction = -1;
         this.algorithm = "dijkstra";
         this.snake = [{
             "x": 15,
@@ -96,6 +96,7 @@ class Main extends React.Component{
     };
 
     findPath =()=> {
+        this.direction = -1;
         let data = {
             'snake': this.snake,
             'apple': this.apple,
@@ -142,6 +143,7 @@ class Main extends React.Component{
           "x": Math.floor(Math.random() * Math.floor(this.cols)),
           "y": Math.floor(Math.random() * Math.floor(this.rows)),
         };
+        this.direction = -1;
         this.findPath()
     };
 
@@ -154,7 +156,7 @@ class Main extends React.Component{
     };
 
     play = () => {
-      if(this.state.error == 'success'){
+      if(this.state.error == 'success' && this.direction >= 0){
           let g = this.state.gridFull;
           let g2 = arrayClone(this.state.gridFull);
           g2[this.apple.x][this.apple.y] = 2;
