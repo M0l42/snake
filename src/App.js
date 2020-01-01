@@ -3,6 +3,15 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {isMobile} from 'react-device-detect';
 
+class SetInfo extends React.Component {
+    render(){
+        if (isMobile) {
+            return(<div className="description">{window.flask_description}</div>);
+        }
+        return(<h2>{window.flask_description}</h2>);
+    }
+}
+
 class Box extends React.Component {
     selectBox = () => {
         this.props.selectBox(this.props.row, this.props.col)
@@ -233,7 +242,7 @@ class Main extends React.Component{
         return (
             <div>
                 <h1>{window.flask_title}</h1>
-                <h2>{window.flask_description}</h2>
+                <SetInfo/>
                 <div className="center my-4">
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-primary" onClick={() => this.playButton()}>Play</button>

@@ -27,6 +27,12 @@ body {
   background: #00CCFF;
 }
 
+.description{
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+
 .center {
   margin: auto;
   display: table;
