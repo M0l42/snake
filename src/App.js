@@ -65,8 +65,8 @@ class Main extends React.Component{
     constructor() {
         super();
         if (isMobile) {
-            this.cols = 30;
-            this.rows = 30;
+            this.cols = 15;
+            this.rows = 15;
         }
         else {
             this.cols = 30;
