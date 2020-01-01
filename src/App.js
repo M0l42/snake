@@ -88,9 +88,12 @@ class Main extends React.Component{
 
     buildList =(data)=>{
         this.state.list = [];
-        this.setState({list: data.path});
-        this.direction = this.state.list[this.state.list.length - 1];
-        this.state.list.pop();
+        this.setState({list: data.path, error: data.result});
+        console.log(this.state.error);
+        if(this.state.error == 'success'){
+            this.direction = this.state.list[this.state.list.length - 1];
+            this.state.list.pop();
+        }
     };
 
     findPath =()=> {
@@ -152,7 +155,7 @@ class Main extends React.Component{
     };
 
     play = () => {
-      if(this.state.list.length>0){
+      if(this.state.error == 'success'){
           let g = this.state.gridFull;
           let g2 = arrayClone(this.state.gridFull);
           g2[this.apple.x][this.apple.y] = 2;
@@ -180,7 +183,6 @@ class Main extends React.Component{
 
           if(this.newHead_x != this.apple.x || this.newHead_y != this.apple.y){
               let oldTails = this.snake[0];
-              console.log(g2[oldTails.x][oldTails.y])
               g2[oldTails.x][oldTails.y] = 0;
               this.snake.shift();
           }
