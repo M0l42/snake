@@ -89,7 +89,6 @@ class Main extends React.Component{
     buildList =(data)=>{
         this.state.list = [];
         this.setState({list: data.path, error: data.result});
-        console.log(this.state.error);
         if(this.state.error == 'success'){
             this.direction = this.state.list[this.state.list.length - 1];
             this.state.list.pop();
@@ -185,6 +184,8 @@ class Main extends React.Component{
               let oldTails = this.snake[0];
               g2[oldTails.x][oldTails.y] = 0;
               this.snake.shift();
+              this.direction = this.state.list[this.state.list.length - 1];
+              if(this.state.list.length != 1) this.state.list.pop();
           }
           else{
               let apple_is_safe = true;
@@ -195,9 +196,6 @@ class Main extends React.Component{
               }
               this.findPath();
           }
-
-          this.direction = this.state.list[this.state.list.length - 1];
-          if(this.state.list.length != 1) this.state.list.pop();
 
           this.setState({
             gridFull: g2,
