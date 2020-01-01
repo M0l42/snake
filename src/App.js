@@ -76,8 +76,8 @@ class Main extends React.Component{
         this.direction = -1;
         this.algorithm = "dijkstra";
         this.snake = [{
-            "x": 15,
-            "y": 15,
+            "x": Math.floor(this.rows/2),
+            "y": Math.floor(this.cols/2),
           }];
         this.apple = {
           "x": Math.floor(Math.random() * Math.floor(this.cols)),
@@ -153,8 +153,8 @@ class Main extends React.Component{
            error: null,
         });
         this.snake = [{
-            "x": 15,
-            "y": 15,
+            "x": Math.floor(this.rows/2),
+            "y": Math.floor(this.cols/2),
           }];
         this.apple = {
           "x": Math.floor(Math.random() * Math.floor(this.cols)),
