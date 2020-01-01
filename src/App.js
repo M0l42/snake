@@ -72,7 +72,6 @@ class Main extends React.Component{
             this.cols = 30;
             this.rows = 30;
         }
-        return <div> ...content </div>
         this.speed = 60;
         this.direction = -1;
         this.algorithm = "dijkstra";
@@ -93,7 +92,7 @@ class Main extends React.Component{
             gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(0) )
         };
         this.findPath()
-    }
+    };
 
     buildList =(data)=>{
         this.state.list = [];
@@ -116,7 +115,9 @@ class Main extends React.Component{
             'snake': this.snake,
             'apple': this.apple,
             'algorithm': this.algorithm,
-        }
+            'rows': this.rows,
+            'cols': this.cols
+        };
         fetch("/update/", {
             method: 'POST',
             body: JSON.stringify(data)
