@@ -93,7 +93,7 @@ class Main extends React.Component{
             this.direction = this.state.list[this.state.list.length - 1];
             this.state.list.pop();
         }
-        if(this.state.error == "Not Found"){
+        else if(this.state.error != null){
             console.log(this.state.error)
             console.log(this.apple)
         }
@@ -196,9 +196,13 @@ class Main extends React.Component{
           else{
               let apple_is_safe = true;
               while(apple_is_safe){
-                this.apple.x = Math.floor(Math.random() * Math.floor(this.cols));
-                this.apple.y = Math.floor(Math.random() * Math.floor(this.rows));
-                if( g2[this.apple.x][this.apple.y]==0 ) apple_is_safe = false;
+                let apple_x = Math.floor(Math.random() * Math.floor(this.cols));
+                let apple_y = Math.floor(Math.random() * Math.floor(this.rows));
+                if( g2[apple_x][apple_y]==0 ){
+                    apple_is_safe = false;
+                    this.apple.x = apple_x;
+                    this.apple.y = apple_y;
+                }
               }
               this.findPath();
           }
