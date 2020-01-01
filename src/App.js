@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class Box extends React.Component {
     selectBox = () => {
         this.props.selectBox(this.props.row, this.props.col)
-    }
+    };
 
     render() {
         return(
@@ -80,6 +80,7 @@ class Main extends React.Component{
         this.state = {
             list: [],
             error: null,
+            win: "Snake is playing",
             generation: 0,
             gridFull: Array(this.rows).fill().map(() => Array(this.cols).fill(0) )
         };
@@ -94,8 +95,10 @@ class Main extends React.Component{
             this.state.list.pop();
         }
         else if(this.state.error != null){
-            console.log(this.state.error)
-            console.log(this.apple)
+            console.log(this.state.error);
+            console.log(this.apple);
+            this.setState({win: "Lost! Try again by Clearing the board !"});
+            console.log(this.state.win)
         }
     };
 
@@ -136,6 +139,7 @@ class Main extends React.Component{
         this.setState({
            gridFull: grid,
            generation: 0,
+           win: "Snake is playing",
            list: [],
            error: null,
         });
@@ -236,6 +240,7 @@ class Main extends React.Component{
                     cols={this.cols}
                     selectBox={this.selectBox}
                 />
+                <h2 className="center my-4" >{this.state.win}</h2>
                 <h2 className="center my-4" >Score {this.snake.length}</h2>
             </div>
         );
