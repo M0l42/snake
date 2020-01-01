@@ -93,6 +93,10 @@ class Main extends React.Component{
             this.direction = this.state.list[this.state.list.length - 1];
             this.state.list.pop();
         }
+        if(this.state.error == "Not Found"){
+            console.log(this.state.error)
+            console.log(this.apple)
+        }
     };
 
     findPath =()=> {
